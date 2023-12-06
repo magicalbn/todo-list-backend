@@ -10,7 +10,7 @@ const createTodo = async (req, res) => {
         const { title, description } = req.body;
 
         await TodoSchema.create({ title, description });
-        res.json({
+        res.status(201).json({
             result: "success",
             data: "resource created",
         });
@@ -54,11 +54,7 @@ const getToDos = async (req, res) => {
 
 const deleteTodo = async (req, res) => {
     try {
-        const validationErros = validationResult(req);
-        if (!validationErros.isEmpty()) {
-            return res.status(400).send({ error: validationErros.array() });
-        }
-        const { id } = req.body;
+        const { id } = req.params;
 
         const data = await TodoSchema.findByIdAndDelete(id);
 

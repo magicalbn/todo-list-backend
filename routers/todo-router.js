@@ -12,11 +12,7 @@ router.post(
     todoController.createTodo
 );
 
-router.delete(
-    "/delete",
-    body("id").isString().notEmpty(),
-    todoController.deleteTodo
-);
+router.delete("/delete/:id", todoController.deleteTodo);
 
 router.get("/list", todoController.getToDos);
 
