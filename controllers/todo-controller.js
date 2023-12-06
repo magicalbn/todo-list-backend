@@ -22,12 +22,28 @@ const createTodo = async (req, res) => {
 
 const getToDos = async (req, res) => {
     try {
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 10;
+
+        const skip = (page - 1) * limit;
+
+        const totalTodos = await TodoSchema.countDocuments();
+        const totalPages = Math.ceil(totalTodos / limit);
+
         const data = await TodoSchema.find()
             .select("-__v")
+            .skip(skip)
+            .limit(limit)
             .sort({ created_at: -1 });
 
         res.json({
             result: "success",
+            pagination: {
+                page: page,
+                limit: limit,
+                total: totalTodos,
+                pages: totalPages,
+            },
             data: data,
         });
     } catch (e) {
