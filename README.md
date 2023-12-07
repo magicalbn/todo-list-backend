@@ -5,7 +5,6 @@ A simple ToDo application built with Node.js and Express, with Jest used for tes
 ## Features
 
 -   Create, Read and Delete operations for todo items.
--   Simple and intuitive user interface.
 -   Uses Node.js and Express for server-side development.
 -   Supports server side pagination
 -   Jest for testing.
@@ -34,7 +33,7 @@ Make sure you have the following installed:
 4. Running the App
 
     npm start
-    The app will be accessible at http://localhost:3000.
+    The app will be accessible at http://localhost:3001.
 
 ### Testing
 
