@@ -24,7 +24,7 @@ Make sure you have the following installed:
 
 2. Navigate to the project directory
 
-    cd todo-app
+    cd todo-backend
 
 3. Install dependencies:
 
